@@ -3,7 +3,7 @@ Wifi mains relay
 
 # Synopsis
 
-Create a wifi controlled main relay.
+Create a wifi controlled mains relay.
 
 # Technologies
 
@@ -11,4 +11,4 @@ Create a wifi controlled main relay.
 
 # To do
 
-- Add ebay parts linksS
+- Add ebay parts links
