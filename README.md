@@ -11,9 +11,9 @@ Create a wifi controlled mains relay.
 
 ## To do
 
-- Add casing design
+- ~~Add casing design~~
 - Add wiring diagram
-- Add code & programming instructions
+- ~~Add code~~ & programming instructions
 
 ## Parts list
 
