@@ -6,13 +6,13 @@
 
 const char* ssid     = "your network ssid";
 const char* password = "your password";
-IPAddress ip(192, 168, 0, 71);    
+IPAddress ip(192, 168, 1, 71);    
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
 ESP8266WebServer server(80);
 
-int relay = 10; 
+int relay = 10;
 int button = 11;
 int val = 0;
 int temp = 0;
@@ -22,15 +22,15 @@ void handle_root() {
   server.send(200, "text/plain", "Hello. I am a mains relay. /on or /off");
   delay(100);
 }
- 
+
 void setup(void)
 {
   pinMode(relay, OUTPUT);
   pinMode(button, INPUT);
-  
-  Serial.begin(115200); 
 
-  
+  Serial.begin(115200);
+
+
   WiFi.begin(ssid, password);
   WiFi.config(ip, gateway, subnet);
   Serial.print("\n\r \n\rWorking to connect");
@@ -45,30 +45,30 @@ void setup(void)
   Serial.println(ssid);
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
-   
+
   server.on("/", handle_root);
-  
-  server.on("/off", [](){  
+
+  server.on("/off", [](){
     relayOff();
     webString = 'Off';
-    server.send(200, "text/plain", webString);           
+    server.send(200, "text/plain", webString);
   });
 
-  server.on("/on", [](){  
+  server.on("/on", [](){
     relayOn();
     webString = 'On';
-    server.send(200, "text/plain", webString);               
+    server.send(200, "text/plain", webString);
   });
-  
+
   server.begin();
   Serial.println("HTTP server started");
 }
- 
+
 void loop(void)
 {
   server.handleClient();
   checkButton();
-} 
+}
 
 void relayOn(){
   digitalWrite(relay, HIGH);
@@ -81,25 +81,24 @@ void relayOff(){
 }
 
 void checkButton(){
-  
+
   int current = digitalRead(button);
-  
+
   if (current == HIGH && temp != current){
-   
+
     if (val == HIGH){
       relayOff();
     }
-   
+
     if (val == LOW){
       relayOn();
     }
-   
+
     temp = current;
   }
-  
+
   if (current == LOW && temp != current){
     temp = current;
   }
 
 }
-
