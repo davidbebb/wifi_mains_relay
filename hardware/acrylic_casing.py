@@ -44,10 +44,29 @@ back_border=FingerJointBoxSide(
 )
 
 back=module.add_path(Part(name='back', border=back_border, layer='back'))
-back.numer=2
+back.number=2
 
 
-bottom_border = FingerJointBoxSide(centre, box_width, box_depth, 'in', corners={'left':'off', 'top':'on', 'right':'off', 'bottom':'on'}, sidemodes={}, tab_length=tab_length, thickness={'left':thickness, 'right':thickness, 'bottom':thickness, 'top':thickness}, cutterrad=0, cutter=cutter, centred=True, fudge=fudge, auto=True)
+bottom_border = FingerJointBoxSide( centre,
+                                    box_width,
+                                    box_depth,
+                                    'in',
+                                    corners={   'left':'off',
+                                                'top':'on',
+                                                'right':'off',
+                                                'bottom':'on'},
+                                    sidemodes={},
+                                    tab_length=tab_length,
+                                    thickness={ 'left':thickness,
+                                                'right':thickness,
+                                                'bottom':thickness,
+                                                'top':thickness},
+                                    cutterrad=0,
+                                    cutter=cutter,
+                                    centred=True,
+                                    fudge=fudge,
+                                    auto=True
+                                    )
 
 top=module.add_path(Part(name='top', border=bottom_border,  layer='top'))
 
